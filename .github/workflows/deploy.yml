@@ -1,0 +1,30 @@
+name: Déploiement de Nikola en GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  nikola_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        
+      - name: Cleanup doit db
+        run: rm -f .doit.db .doit.db.*
+
+      - name: Build and Deploy Nikola
+        uses: getnikola/nikola-action@v2
+        env:
+          GIT_CONFIG_COUNT: 1
+          GIT_CONFIG_KEY_0: safe.directory
+          GIT_CONFIG_VALUE_0: /github/workspace
+        with:
+          entryPoint: /bin/sh
+          args: -c "python -m pip install -r requirements.txt && nikola build && ghp-import -n -p -f -r origin -b gh-pages output"

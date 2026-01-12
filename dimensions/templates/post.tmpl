@@ -1,0 +1,10 @@
+{% extends 'base.tmpl' %}
+{% block center_section %}
+{% set slug = post.meta('slug') %}
+<article id="{{ slug|e }}" class="post active">
+	<h2 class="major">{{ post.title()|e }}</h2>
+	<div class="post-content">
+		{{ post.text() }}
+	</div>
+</article>
+{% endblock %}

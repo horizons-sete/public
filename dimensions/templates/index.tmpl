@@ -1,0 +1,15 @@
+{% extends 'base.tmpl' %}
+{% block center_section %}
+{% if pages %}
+{% for page in pages %}
+{% set slug = page.meta('slug') %}
+<article id="{{ slug|e }}" class="page">
+	<h2 class="major"><a href="#{{ slug|e }}" style="border:none;">{{ page.title()|e }}</a></h2>
+	<div class="page-content">
+		{% if page.meta('youtube') %}{{page.meta('youtube')}}{% endif %}
+		{{ page.text() }}
+	</div>
+</article>
+{% endfor %}
+{% endif %}
+{% endblock %}

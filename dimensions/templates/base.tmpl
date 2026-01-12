@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="fr">
+	<head>
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-T2N6NX4R');</script>
+		<!-- End Google Tag Manager -->
+		{% if blog_title in title %}
+        <title>{{ title|e }}</title>
+        {% else %}
+        <title>{{ title|e }} | {{ blog_title|e }}</title>
+        {% endif %}
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="icon" type="image/png" href="{{ site_url }}/assets/images/logo.png" />
+		<link rel="stylesheet" href="{{ site_url }}/assets/css/main.css" />
+		{% block extra_head %}{% endblock %}
+		{{ template_hooks['extra_head']() }}
+	</head>
+	<body class="is-preload">
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2N6NX4R"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+
+{% block content %}
+				<!-- Header -->
+					<header id="header">
+							<img class="logo" src="{{ site_url }}/assets/images/logo.png" alt="{{ blog_title|e }}" />
+						<div class="content">
+							<div class="inner">
+								<h1>{{ blog_title|e }}</h1>
+								<p>{{ blog_description }}</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								{% if pages is defined and pages %}
+									{% for page in pages %}
+										{% set slug = page.meta('slug') %}
+										{% if slug %}
+											<li><a href="#{{ slug|e }}">{{ page.title()|e }}</a></li>
+										{% endif %}
+									{% endfor %}
+								{% else %}
+									{% for url, label in navigation_links.get(lang, ()) %}
+										<li><a href="{{ url }}">{{ label }}</a></li>
+									{% endfor %}
+								{% endif %}
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+{% block center_section %}
+
+{% endblock %}
+					</div>
+{% endblock %}
+				<!-- Footer -->
+					<footer id="footer">
+						{% set social_links = theme_config.get("social_links", []) if theme_config is defined else [] %}
+									{% if social_links %}
+									<ul class="icons">
+										{% for item in social_links %}
+											{% if item.url and item.icon %}
+											<li>
+												<a href="{{ item.url|e }}" target="_blank" rel="noopener noreferrer" class="icon brands fa-{{ item.icon|e }}">
+													<span class="label">{{ item.name|e }}</span>
+												</a>
+											</li>
+											{% endif %}
+										{% endfor %}
+									</ul>
+									{% endif %}
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="{{ site_url }}/assets/js/jquery.min.js"></script>
+			<script src="{{ site_url }}/assets/js/browser.min.js"></script>
+			<script src="{{ site_url }}/assets/js/breakpoints.min.js"></script>
+			<script src="{{ site_url }}/assets/js/util.js"></script>
+			<script src="{{ site_url }}/assets/js/main.js"></script>
+
+			{% block extra_js %}{% endblock %}
+			{{ body_end }}
+			{{ template_hooks['body_end']() }}
+
+	</body>
+</html>

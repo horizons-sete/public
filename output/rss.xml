@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Horizons Sète</title><link>http://localhost:8000/</link><description>
+Comité local Horizons à Sète, le parti d'Édouard Philippe. &lt;br /&gt;Découvrez nos actions et engagements locaux.
+</description><atom:link href="http://localhost:8000/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>fr</language><copyright>Contents © 2026 &lt;a href="mailto:stephane.manet@pm.me"&gt;Stéphane Manet&lt;/a&gt; </copyright><lastBuildDate>Mon, 12 Jan 2026 16:20:58 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs></channel></rss>
