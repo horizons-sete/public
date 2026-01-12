@@ -1,0 +1,4 @@
+Sitemap: https://horizons-sete.github.io/public/sitemapindex.xml
+
+User-Agent: *
+Host: horizons-sete.github.io
